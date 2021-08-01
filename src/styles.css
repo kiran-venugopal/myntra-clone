@@ -1,4 +1,35 @@
+@import url(//db.onlinewebfonts.com/c/294afa63edf49dc293dd90373066b4d4?family=Whitney);
+
+@font-face {
+  font-family: "Whitney";
+  src: url("//db.onlinewebfonts.com/t/294afa63edf49dc293dd90373066b4d4.eot");
+  src: url("//db.onlinewebfonts.com/t/294afa63edf49dc293dd90373066b4d4.eot?#iefix")
+      format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/294afa63edf49dc293dd90373066b4d4.woff2")
+      format("woff2"),
+    url("//db.onlinewebfonts.com/t/294afa63edf49dc293dd90373066b4d4.woff")
+      format("woff"),
+    url("//db.onlinewebfonts.com/t/294afa63edf49dc293dd90373066b4d4.ttf")
+      format("truetype"),
+    url("//db.onlinewebfonts.com/t/294afa63edf49dc293dd90373066b4d4.svg#Whitney")
+      format("svg");
+}
+
 .App {
-  font-family: sans-serif;
   text-align: center;
+}
+body {
+  margin: 0;
+  font-family: "Whitney", sans-serif;
+  color: #282c3f;
+}
+
+.image {
+  background: url(/assets/images.png);
+  background-size: 1404px 105px;
+}
+
+.heading-1 {
+  font-size: 14px;
+  font-weight: 800;
 }
