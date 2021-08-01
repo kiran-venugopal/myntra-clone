@@ -1,4 +1,5 @@
 import { atom, selector } from "recoil";
+import { FiltersAtom } from "./Filters";
 
 export const ProductsAtom = atom({
   key: "PRODUCTS",
@@ -12,7 +13,12 @@ export const filteredProductsSelector = selector({
   key: "todoListStatsState",
   get: ({ get }) => {
     const productsData = get(ProductsAtom);
-    const products = productsData.products;
+    const filters = get(FiltersAtom);
+    let products = productsData.products;
+
+    Object.entries(filters.selected).forEach(([key, value]) => {
+      products = products.filter((p) => p[key] === value);
+    });
 
     return {
       isLoading: productsData.isLoading,

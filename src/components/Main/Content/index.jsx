@@ -42,7 +42,7 @@ export default function Content() {
 
   return (
     <div className="content">
-      {products.slice(50, 60).map((e) => (
+      {products.map((e) => (
         <ProductGrid {...e} key={e.productId} />
       ))}
     </div>

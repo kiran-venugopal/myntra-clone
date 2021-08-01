@@ -11,11 +11,12 @@ function Item({ item }) {
 }
 
 export default function ProductGrid({
-  productName,
   images = [],
   price,
   mrp,
-  discount
+  discount,
+  additionalInfo,
+  brand
 }) {
   const [isCarouselOpen, setCarouselOpen] = React.useState(false);
 
@@ -33,6 +34,7 @@ export default function ProductGrid({
           interval={1500}
           stopAutoPlayOnHover={false}
           navButtonsAlwaysInvisible={true}
+          className="carousel"
         >
           {images.slice(1).map((item, i) => (
             <Item key={i} item={item} />
@@ -43,6 +45,10 @@ export default function ProductGrid({
           <img alt="" src={images[0].src} />
         </Fragment>
       )}
+      <div className="title">{brand}</div>
+
+      <div className="additional">{additionalInfo}</div>
+
       <div className="price-tag">
         <div className="price">Rs. {price}</div>
         {discount && (

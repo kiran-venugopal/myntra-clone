@@ -32,4 +32,5 @@ body {
 .heading-1 {
   font-size: 14px;
   font-weight: 800;
+  text-transform: uppercase;
 }
