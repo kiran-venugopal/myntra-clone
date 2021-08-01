@@ -18,16 +18,32 @@ export default function Filters() {
 
   function handleChange(e) {
     let target = e.target;
-    setFilterData((prev) => ({
-      ...prev,
-      selected: {
-        ...prev.selected,
-        [target.name]:
-          target.name === "gender"
-            ? target.value
-            : [...prev.selected[target.name], target.value]
-      }
-    }));
+
+    if (target.name === "gender") {
+      setFilterData((prev) => ({
+        ...prev,
+        selected: {
+          ...prev.selected,
+          [target.name]: target.value
+        }
+      }));
+      return;
+    }
+
+    setFilterData((prev) => {
+      let selected = prev.selected?.[target.name] || [];
+      selected = selected?.includes(target.value)
+        ? selected.filter((f) => f !== target.value)
+        : [...selected, target.value];
+
+      return {
+        ...prev,
+        selected: {
+          ...prev.selected,
+          [target.name]: selected
+        }
+      };
+    });
   }
 
   return (
@@ -42,7 +58,9 @@ export default function Filters() {
           {genders.map((g) => (
             <FormControlLabel
               value={g.name}
-              control={<Radio size="small" />}
+              control={
+                <Radio checked={selected?.gender === g.name} size="small" />
+              }
               label={g.name}
             />
           ))}
@@ -58,7 +76,7 @@ export default function Filters() {
               label={c}
               control={
                 <Checkbox
-                  checked={selected.category.includes(c)}
+                  checked={selected.category?.includes(c) || false}
                   onChange={handleChange}
                   value={c}
                   name="category"
@@ -78,7 +96,7 @@ export default function Filters() {
               label={b}
               control={
                 <Checkbox
-                  checked={selected.brand.includes(b)}
+                  checked={selected.brand?.includes(b)}
                   onChange={handleChange}
                   value={b}
                   name="brand"

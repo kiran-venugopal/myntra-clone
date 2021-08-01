@@ -17,7 +17,12 @@ export const filteredProductsSelector = selector({
     let products = productsData.products;
 
     Object.entries(filters.selected).forEach(([key, value]) => {
-      products = products.filter((p) => p[key] === value);
+      products = products.filter((p) => {
+        if (key === "gender") {
+          return p[key] === value;
+        }
+        return value?.length ? value.includes(p[key]) : true;
+      });
     });
 
     return {
