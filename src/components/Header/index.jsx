@@ -17,7 +17,20 @@ export default function Header() {
       <div className="search">
         <SearchInput />
       </div>
-      <div className="options"></div>
+      <div className="options">
+        <div className="option-item">
+          <div className="person image" />
+          <div>Profile</div>
+        </div>
+        <div className="option-item">
+          <div className="wishlist image" />
+          <div>Whishlist</div>
+        </div>
+        <div className="option-item">
+          <div className="bag image" />
+          <div>Bag</div>
+        </div>
+      </div>
     </div>
   );
 }
